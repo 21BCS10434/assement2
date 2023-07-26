@@ -1,14 +1,33 @@
 # assement2
+Introduction
+MyToken is an Ethereum-based smart contract that implements a simple ERC-20 compatible token with minting and burning functionalities. The contract allows users to create and destroy tokens within the contract.
+
+Token Details
+
+.Token Name: META
+.Token Abbreviation: MTA
+.Total Supply: 0 (initially, as tokens are minted, the total supply will increase)
+
+Functions
+
+mint(address _address, uint _value) public: This function is used to create new tokens and assign them to a specified address.
+
+Parameters:
+_address: The address to which the newly minted tokens will be assigned.
+_value: The number of tokens to be minted and assigned to the given address.
+Modifies:
+totalSupply: Increases the total supply of the tokens.
+balances[_address]: Increases the balance of the specified address by the given _value.
+burn(address _address, uint _value) public: This function allows users to destroy tokens held by their address.
+
+Parameters:
+_address: The address from which tokens will be burned.
+_value: The number of tokens to be destroyed.
+Modifies:
+totalSupply: Decreases the total supply of the tokens.
+balances[_address]: Decreases the balance of the specified address by the given _value.
 
 
-contract MyToken { ... }: This defines the main contract called MyToken, which represents the token contract with its functionalities.
-string public tokenName = "META";: This creates a public variable tokenName that stores the name of the token. In this case, it is set to "META".
-string public tokenAbbrv = "MTA";: This creates a public variable tokenAbbrv that stores the abbreviation or symbol of the token. In this case, it is set to "MTA".
-uint public totalSupply = 0;: This creates a public variable totalSupply that keeps track of the total supply of tokens. Initially, it is set to 0.
-mapping(address => uint) public balances;: This creates a mapping called balances, which maps addresses to their corresponding token balances. It allows the contract to keep track of how many tokens each address holds.
-function mint(address _address, uint _value) public { ... }: This is the mint function. It takes two parameters: _address (the address to which tokens will be minted) and _value (the number of tokens to mint). Inside the function, it increases the total supply by the specified _value and increases the balance of the _address by the same amount. This function allows the contract owner or anyone with access to the contract to create new tokens out of thin air and distribute them to specific addresses.
-function burn(address _address, uint _value) public { ... }: This is the burn function. It takes two parameters: _address (the address from which tokens will be burned) and _value (the number of tokens to burn). Inside the function, it checks if the _address has a balance greater than or equal to _value, and if so, it deducts the _value from the total supply and from the balance of the _address. This function allows the contract owner or anyone with access to the contract to destroy tokens held by specific addresses, effectively reducing the total supply.
-The burn function includes a conditional statement if (balances[_address] >= _value) to ensure that the balance of the _address is greater than or equal to the amount that is supposed to be burned. This prevents burning more tokens than the address actually holds, ensuring that the contract maintains a valid token accounting.
 
 License // SPDX-License-Identifier: MIT
 
